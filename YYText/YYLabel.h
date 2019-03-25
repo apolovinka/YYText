@@ -23,6 +23,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class YYLabel;
+
+@protocol YYTextAsyncDelegate <NSObject>
+
+- (void)labelDidFinishAsyncTextLoading:(YYLabel *)label;
+
+@end
+
 #if !TARGET_INTERFACE_BUILDER
 
 /**
@@ -46,6 +54,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///=============================================================================
 /// @name Accessing the Text Attributes
 ///=============================================================================
+
+@property (nullable, nonatomic, weak) id<YYTextAsyncDelegate> asyncTextDelegate;
 
 /**
  The text displayed by the label. Default is nil.

@@ -1200,6 +1200,10 @@ static dispatch_queue_t YYLabelGetReleaseQueue() {
             transition.type = kCATransitionFade;
             [layer addAnimation:transition forKey:@"contents"];
         }
+        
+        if ([self.asyncTextDelegate respondsToSelector:@selector(labelDidFinishAsyncTextLoading:)]) {
+            [self.asyncTextDelegate labelDidFinishAsyncTextLoading:self];
+        }
     };
     
     return task;
